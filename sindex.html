@@ -37,6 +37,23 @@
             reader.readAsDataURL(file); // Чтение файла в формате base64
           }
         });
+
+        // Функция для открытия страницы в полноэкранном режиме
+        function openFullscreen() {
+          const elem = document.documentElement;
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen(); // Firefox
+          } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen(); // Chrome, Safari и Opera
+          } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen(); // IE/Edge
+          }
+        }
+
+        // Включаем полноэкранный режим при загрузке страницы
+        openFullscreen();
       });
     </script>
   </head>
