@@ -175,7 +175,7 @@ button {
   position: relative;
   width: 350px;
   height: 53px;
-  margin: 16px auto; /* Установка отступа сверху и снизу, центрирование по горизонтали */
+  margin-top: 16px; /* Установка отступа сверху и снизу, центрирование по горизонтали */
   cursor: pointer;
   background: #0089d0;
   border: none;
