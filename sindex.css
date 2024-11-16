@@ -138,66 +138,6 @@ button {
   -webkit-mask-image: url(./sassets/images/109e290e-dacd-4a1a-81d7-f400d43df96e.png);
   -webkit-mask-size: cover;
 }
-.group-3 {
-  position: relative;
-  width: 28px;
-  height: 6px;
-  margin: 0 0 0 0;
-  z-index: 18;
-  border-radius: 1px;
-}
-.vector-4 {
-  position: absolute;
-  width: 21.43%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: url(./sassets/images/0b30ec9e-2922-4bdd-95b6-77624eb79a31.png)
-    no-repeat center;
-  background-size: 100% 100%;
-  z-index: 19;
-}
-.vector-5 {
-  position: absolute;
-  width: 21.43%;
-  height: 100%;
-  top: 0;
-  left: 78.57%;
-  background: url(./sassets/images/5ff2307e-699e-428e-bedb-e6fb671c459e.png)
-    no-repeat center;
-  background-size: 100% 100%;
-  z-index: 20;
-}
-.group-6 {
-  position: relative;
-  width: 28px;
-  height: 6px;
-  margin: 16px 0 0 0;
-  z-index: 21;
-  border-radius: 1px;
-}
-.vector-7 {
-  position: absolute;
-  width: 21.43%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: url(./sassets/images/26819230-339b-44fc-a9df-ed94069eecfc.png)
-    no-repeat center;
-  background-size: 100% 100%;
-  z-index: 22;
-}
-.vector-8 {
-  position: absolute;
-  width: 21.43%;
-  height: 100%;
-  top: 0;
-  left: 78.57%;
-  background: url(./sassets/images/d76272ca-c52a-4a82-9014-5a7c2340c15a.png)
-    no-repeat center;
-  background-size: 100% 100%;
-  z-index: 23;
-}
 .group-9 {
   position: absolute;
   width: 96%;
@@ -253,6 +193,7 @@ button {
   align-items: center; /* Центрируем изображение по вертикали */
   position: relative; /* Задаем относительное позиционирование */
   z-index: 1; /* Указываем, что изображение будет под кнопкой */
+
 }
 
 /* Добавляем стили для изображения */
