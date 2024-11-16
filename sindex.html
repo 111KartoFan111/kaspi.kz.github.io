@@ -1,82 +1,303 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kaspi.kz</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" />
-    <link rel="apple-touch-icon" href="https://project-x-pearl-1234.vercel.app/icon-192x192.png">
-    <link rel="stylesheet" href="sindex.css" />
-  </head>
-  <script defer>
-    document.addEventListener("DOMContentLoaded", function () {
-      const fileInput = document.getElementById('img-upl');
-      const imgPreview = document.querySelector('.idimg');
-      const uploadLabel = document.getElementById('upload-label');
+:root {
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+    "Source Han Sans CN", sans-serif;
+}
 
-      // Восстанавливаем изображение из localStorage при загрузке страницы
-      const savedImage = localStorage.getItem('uploadedImage');
-      if (savedImage) {
-        imgPreview.src = savedImage;
-        imgPreview.style.display = 'block'; // Показываем изображение
-        uploadLabel.style.display = 'none'; // Скрываем кнопку
-      }
+.main-container {
+  overflow: hidden;
+}
 
-      // Обработчик загрузки файла
-      fileInput.addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            imgPreview.src = e.target.result;
-            imgPreview.style.display = 'block'; // Показываем изображение
-            uploadLabel.style.display = 'none'; // Скрываем кнопку
+.main-container,
+.main-container * {
+  box-sizing: border-box;
+}
 
-            // Сохраняем изображение в localStorage
-            localStorage.setItem('uploadedImage', e.target.result);
-          };
-          reader.readAsDataURL(file); // Чтение файла в формате base64
-        }
-      });
-    });
-  </script>
-  <body>
-    <div class="main-container">
-      <div class="flex-row-a">
-        <a href="mindex.html" class="chevron-left"><div class="vector"></div></a>
-        <div class="my-bank">
-          <span class="udostoverenie">Удостоверение личности</span>
-        </div>
-      </div>
-      <div class="slider">
-        <div class="rectangle"></div>
-        <button class="button-rectangle"></button>
-        <div class="button-documents">Документы</div>
-        <a href="rindex.html" class="span-requisites">Реквизиты</a>
-      </div>
-      <div class="ready-made">
-        <div class="img-prewiev">
-          <img alt="Описание изображения" class="idimg" style="display: none;" />
-          <label id="upload-label" for="img-upl" style="cursor: pointer;">Загрузить документ</label>
-          <input type="file" id="img-upl" style="display: none;" />
-        </div>
-        <div class="present">
-          <div class="rectangle-2"></div>
-          <div class="main-icons-app">
-            <div class="group">
-              <div class="group-9"><div class="rectangle-a"></div></div>
-              <div class="combined-shape"></div>
-            </div>
-          </div>
-          <div class="present-document">Предъявить документ</div>
-        </div>
-        <div class="present1">
-          <div class="rectangle-2"></div>
-          <div class="main-icons-app">
-          </div>
-          <span class="present1-document">Отправить документ</span>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+input,
+select,
+textarea,
+button {
+  outline: 0;
+}
+
+.main-container {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  margin: 0 auto;
+  background: #ffffff;
+  overflow: hidden;
+}
+.flex-row-a {
+  position: relative;
+  width: 269px;
+  height: 24px;
+  margin: 8px 0 0 16px;
+  z-index: 2;
+}
+.chevron-left {
+  position: absolute;
+  width: 8.92%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.vector {
+  position: relative;
+  width: 10px;
+  height: 16px;
+  margin: 3px 0 0 7px;
+  background: url(./sassets/images/d408e488-1c5e-4adb-9116-d41354458147.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 1;
+}
+.my-bank {
+  position: absolute;
+  width: 179px;
+  height: 75%;
+  top: 0;
+  left: 50%;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17.578px;
+  text-align: left;
+  text-overflow: initial;
+  white-space: nowrap;
+  transform: translate(-24.86%, 0);
+  z-index: 2;
+}
+.udostoverenie {
+  position: relative;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: Roboto, var(--default-font-family);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 17.578px;
+  text-align: left;
+}
+.lichnosti {
+  position: relative;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: Roboto, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 17.578px;
+  text-align: left;
+}
+.ready-made {
+  position: relative;
+  width: 390px;
+  height: 796px;
+  margin: 16px 0 0 0;
+  background: #ffffff;
+  z-index: 3;
+  overflow: hidden;
+}
+.present {
+  position: relative;
+  width: 350px;
+  height: 53px;
+  margin: 616px 0 0 20px;
+  cursor: pointer;
+  background: #0089d0;
+  border: none;
+  z-index: 13;
+  border-radius: 7px;
+}
+.rectangle-2 {
+  position: absolute;
+  width: 350px;
+  height: 53px;
+  top: 0;
+  left: 0;
+  border: 1px solid #0189cf;
+  z-index: 15;
+  border-radius: 7px;
+}
+.main-icons-app {
+  position: absolute;
+  width: 10.29%;
+  height: 67.92%;
+  top: 15.09%;
+  left: 19.71%;
+  z-index: 16;
+}
+.group-9 {
+  position: absolute;
+  width: 96%;
+  height: 96.43%;
+  top: 0.42%;
+  left: 4%;
+  z-index: 24;
+}
+.present-document {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 172px;
+  height: 17px;
+  top: 18px;
+  left: 89px;
+  color: #ffffff;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  text-align: center;
+  z-index: 27;
+}
+
+/* Оставляем стили для img-prewiev */
+.img-prewiev {
+  display: flex;
+  justify-content: center; /* Центрируем изображение по горизонтали */
+  align-items: center; /* Центрируем изображение по вертикали */
+  position: relative; /* Задаем относительное позиционирование */
+  z-index: 1; /* Указываем, что изображение будет под кнопкой */
+
+}
+
+/* Добавляем стили для изображения */
+.idimg {
+  width: flex;
+  height: 600px;
+  object-fit: 100%; /* Обеспечиваем правильное масштабирование изображения */
+  z-index: 1; /* Изображение будет под текстом кнопки */
+}
+
+/* Стили для кнопки "Предъявить документ" */
+.present {
+  position: relative;
+  width: 350px;
+  height: 53px;
+  margin: 16px auto; /* Установка отступа сверху и снизу, центрирование по горизонтали */
+  cursor: pointer;
+  background: #0089d0;
+  border: none;
+  z-index: 13;
+  left: 4px;
+  border-radius: 7px;
+}
+
+/* Текст на кнопке */
+.present-document {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 172px;
+  height: 17px;
+  top: 18px;
+  left: 89px;
+  color: #ffffff;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 14px;
+  text-align: center;
+  z-index: 15; /* Текст на кнопке выше изображения */
+}
+.present1 {
+  position: relative;
+  width: 350px;
+  height: 53px;
+  margin: 16px auto; /* Установка отступа сверху и снизу, центрирование по горизонтали */
+  cursor: pointer;
+  background: #FFFF;
+  border: none;
+  z-index: 13;
+  left: 4px;
+  border-radius: 7px;
+}
+.present1-document {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 172px;
+  height: 17px;
+  top: 18px;
+  left: 89px;
+  color: #0089d0;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 14px;
+  text-align: center;
+  z-index: 15; /* Текст на кнопке выше изображения */
+}
+.slider {
+  position: relative;
+  width: 340px;
+  height: 32px;
+  margin: 25px 0 0 15px;
+  z-index: 4;
+}
+.rectangle {
+  position: absolute;
+  width: 340px;
+  height: 32px;
+  top: 0;
+  left: 18px;
+  background: #d9d9d9;
+  z-index: 5;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+.button-rectangle {
+  position: absolute;
+  width: 169px;
+  height: 30px;
+  top: 1px;
+  left: 20px;
+  cursor: pointer;
+  background: #ffffff;
+  border: none;
+  z-index: 6;
+  border-radius: 7px;
+}
+.button-documents {
+  text-decoration:none;
+  position: absolute;
+  width: 160px;
+  height: 17px;
+  top: 8px;
+  left: 68px;
+  cursor: pointer;
+  color: #6f6f6f;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  z-index: 7;
+}
+.span-requisites {
+  display: flex;
+  text-decoration:none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 160px;
+  height: 17px;
+  top: 7px;
+  left: 200px;
+  color: #6f6f6f;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 8;
+}
