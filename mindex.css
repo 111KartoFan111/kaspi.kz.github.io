@@ -74,7 +74,6 @@ button {
 .frame {
   position: relative;
   width: 390px;
-  height: 101px;
   margin: 22px 0 0 0;
   z-index: 2;
   overflow: hidden;
@@ -181,6 +180,11 @@ button {
   border: none;
   z-index: 5;
   margin-top: 300px;
+}
+.hew{
+  display: flex;
+  flex-direction:column;
+  gap: 15px;
 }
 
 .gov {
