@@ -1,0 +1,436 @@
+:root {
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+    "Source Han Sans CN", sans-serif;
+}
+
+.main-container {
+  overflow: hidden;
+}
+
+.main-container,
+.main-container * {
+  box-sizing: border-box;
+}
+
+input,
+select,
+textarea,
+button {
+  outline: 0;
+}
+
+.main-container {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  min-height: 100vh;
+  padding-bottom: 140px;
+  margin: 0 auto;
+  background: #ffffff;
+  overflow: hidden;
+}
+.flex-row-a {
+  position: relative;
+  width: 269px;
+  height: 24px;
+  margin: 8px 0 0 16px;
+  z-index: 2;
+}
+.chevron-left {
+  position: absolute;
+  width: 8.92%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.vector {
+  position: relative;
+  width: 10px;
+  height: 16px;
+  margin: 3px 0 0 7px;
+  background: url(./sassets/images/d408e488-1c5e-4adb-9116-d41354458147.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 1;
+}
+.my-bank {
+  position: absolute;
+  width: 179px;
+  height: 75%;
+  top: 0;
+  left: 50%;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17.578px;
+  text-align: left;
+  text-overflow: initial;
+  white-space: nowrap;
+  transform: translate(-24.86%, 0);
+  z-index: 2;
+}
+.udostoverenie {
+  position: relative;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: Roboto, var(--default-font-family);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 17.578px;
+  text-align: left;
+}
+.lichnosti {
+  position: relative;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: Roboto, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 17.578px;
+  text-align: left;
+}
+.ready-made {
+  position: relative;
+  width: 100%;
+  height: 796px;
+  margin: 16px 0 0 0;
+  background: #ffffff;
+  z-index: 3;
+  overflow: hidden;
+}
+.present {
+  position: relative;
+  width: 350px;
+  height: 53px;
+  margin: 616px 0 0 20px;
+  cursor: pointer;
+  background: #0089d0;
+  border: none;
+  z-index: 13;
+  border-radius: 7px;
+}
+.rectangle-2 {
+  position: absolute;
+  width: 350px;
+  height: 53px;
+  top: 0;
+  left: 0;
+  border: 1px solid #0189cf;
+  z-index: 15;
+  border-radius: 7px;
+}
+/* Оставляем стили для img-prewiev */
+.img-prewiev {
+  display: flex;
+  justify-content: center; /* Центрируем изображение по горизонтали */
+  align-items: center; /* Центрируем изображение по вертикали */
+  position: relative; /* Задаем относительное позиционирование */
+  z-index: 1; /* Указываем, что изображение будет под кнопкой */
+
+}
+/* Добавляем стили для изображения */
+.idimg {
+  width: flex;
+  height: 500px;
+  object-fit: 100%; /* Обеспечиваем правильное масштабирование изображения */
+  z-index: 1; /* Изображение будет под текстом кнопки */
+}
+
+/* Кнопки внизу */
+.bottom-actions {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;
+  width: 100%;
+  max-width: 420px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 50;
+}
+
+.present {
+  position: static;
+  margin: 0;
+  width: 100%;
+  height: 52px;
+  cursor: pointer;
+  background: #0089d0;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.present-document {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: static;
+  width: auto;
+  height: auto;
+  color: #ffffff;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  gap: 8px;
+}
+
+.present-document img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.present1 {
+  position: static;
+  margin: 0;
+  width: 100%;
+  height: 52px;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #0089d0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.present1-document {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0089d0;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  gap: 8px;
+}
+
+.present1-document img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: invert(41%) sepia(69%) saturate(1406%) hue-rotate(166deg)
+    brightness(94%) contrast(95%);
+  transform: rotate(270deg);
+}
+/* ===== Модальное окно с QR-кодом (bottom sheet) ===== */
+.qr-loading {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 998;
+}
+
+.qr-loading.qr-loading--visible {
+  display: flex;
+}
+
+.qr-spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #f14635;
+  border-right-color: #f14635;
+  animation: qr-spin 0.8s linear infinite;
+}
+
+@keyframes qr-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.qr-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 999;
+}
+
+.qr-modal-overlay.qr-modal--visible {
+  display: flex;
+}
+
+.qr-modal {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 16px 16px 0 0;
+  padding: 16px 20px 32px;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.qr-modal-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.12);
+  margin: 4px auto 12px;
+}
+
+.qr-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.qr-title {
+  margin: 0;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  text-align: left;
+}
+
+.qr-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.qr-subtitle {
+  margin: 8px 0 20px;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+}
+
+.qr-code-box {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-code-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.qr-text-small {
+  margin: 4px 0 4px;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 14px;
+  font-weight: 400;
+  color: #555555;
+  text-align: center;
+}
+
+.qr-code-value {
+  font-family: Roboto, var(--default-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+}
+.slider {
+  position: relative;
+  width: 340px;
+  height: 32px;
+  margin: 25px 0 0 15px;
+  z-index: 4;
+}
+.rectangle {
+  position: absolute;
+  width: 340px;
+  height: 32px;
+  top: 0;
+  left: 18px;
+  background: #d9d9d9;
+  z-index: 5;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+.button-rectangle {
+  position: absolute;
+  width: 169px;
+  height: 30px;
+  top: 1px;
+  left: 20px;
+  cursor: pointer;
+  background: #ffffff;
+  border: none;
+  z-index: 6;
+  border-radius: 7px;
+}
+.button-documents {
+  text-decoration:none;
+  position: absolute;
+  width: 160px;
+  height: 17px;
+  top: 8px;
+  left: 68px;
+  cursor: pointer;
+  color: #6f6f6f;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  z-index: 7;
+}
+.span-requisites {
+  display: flex;
+  text-decoration:none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 160px;
+  height: 17px;
+  top: 7px;
+  left: 200px;
+  color: #6f6f6f;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 8;
+}

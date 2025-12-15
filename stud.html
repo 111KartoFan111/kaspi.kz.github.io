@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>Kaspi.kz</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" />
+    <link rel="apple-touch-icon" href="icon.svg"/>
+    <link rel="icon" href="icon.svg"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Kaspi.kz">
+    <link rel="stylesheet" href="sindex.css" />
+  </head>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      const fileInput = document.getElementById('img-upl');
+      const imgPreview = document.querySelector('.idimg');
+      const uploadLabel = document.getElementById('upload-label');
+
+      // Восстанавливаем изображение из localStorage при загрузке страницы
+      const savedImage = localStorage.getItem('uploadedImage');
+      if (savedImage) {
+        imgPreview.src = savedImage;
+        imgPreview.style.display = 'block'; // Показываем изображение
+        uploadLabel.style.display = 'none'; // Скрываем кнопку
+      }
+
+      // Обработчик загрузки файла
+      fileInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            imgPreview.src = e.target.result;
+            imgPreview.style.display = 'block'; // Показываем изображение
+            uploadLabel.style.display = 'none'; // Скрываем кнопку
+
+            // Сохраняем изображение в localStorage
+            localStorage.setItem('uploadedImage', e.target.result);
+          };
+          reader.readAsDataURL(file); // Чтение файла в формате base64
+        }
+      });
+    });
+  </script>
+  <body>
+    <div class="main-container">
+      <div class="flex-row-a">
+        <a href="mindex.html" class="chevron-left"><div class="vector"></div></a>
+        <div class="my-bank">
+          <span class="udostoverenie">Удостоверение личности</span>
+        </div>
+      </div>
+      <div class="slider">
+        <div class="rectangle"></div>
+        <button class="button-rectangle"></button>
+        <div class="button-documents">Документы</div>
+        <a href="rindex.html" class="span-requisites">Реквизиты</a>
+      </div>
+      <div class="ready-made">
+        <div class="img-prewiev">
+          <img alt="Описание изображения" class="idimg" style="display: none;" />
+          <label id="upload-label" for="img-upl" style="cursor: pointer;">Загрузить документ</label>
+          <input type="file" id="img-upl" style="display: none;" />
+        </div>
+        <div class="present">
+          <div class="rectangle-2"></div>
+          <div class="main-icons-app">
+            <div class="group">
+              <div class="group-9"><div class="rectangle-a"></div></div>
+              <div class="combined-shape"></div>
+            </div>
+          </div>
+          <div class="present-document">Предъявить документ</div>
+        </div>
+        <div class="present1">
+          <div class="rectangle-2"></div>
+          <div class="main-icons-app">
+            <div class="group">
+              <div class="group-3">
+                <div class="vector-4"></div>
+                <div class="vector-5"></div>
+              </div>
+              <div class="group-6">
+                <div class="vector-7"></div>
+                <div class="vector-8"></div>
+              </div>
+              <div class="group-9"><div class="rectangle-a"></div></div>
+              <div class="combined-shape"></div>
+            </div>
+          </div>
+          <span class="present1-document">Отправить документ</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

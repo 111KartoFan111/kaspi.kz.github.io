@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>Kaspi.kz</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" />
+    <link rel="apple-touch-icon" href="icon.svg"/>
+    <link rel="icon" href="icon.svg"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Kaspi.kz">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="sindex.css" />
+  </head>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      const fileInput = document.getElementById('img-upl');
+      const imgPreview = document.querySelector('.idimg');
+      const uploadLabel = document.getElementById('upload-label');
+      const presentButton = document.querySelector('.present');
+      const qrOverlay = document.getElementById('qr-modal');
+      const qrClose = document.querySelector('.qr-close');
+      const qrImage = document.getElementById('qr-image');
+      const qrCodeValue = document.querySelector('.qr-code-value');
+      const qrLoading = document.getElementById('qr-loading');
+
+      // Восстанавливаем изображение из localStorage при загрузке страницы
+      const savedImage = localStorage.getItem('uploadedImage');
+      if (savedImage) {
+        imgPreview.src = savedImage;
+        imgPreview.style.display = 'block'; // Показываем изображение
+        uploadLabel.style.display = 'none'; // Скрываем кнопку
+      }
+
+      // Обработчик загрузки файла
+      fileInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            imgPreview.src = e.target.result;
+            imgPreview.style.display = 'block'; // Показываем изображение
+            uploadLabel.style.display = 'none'; // Скрываем кнопку
+
+            // Сохраняем изображение в localStorage
+            localStorage.setItem('uploadedImage', e.target.result);
+          };
+          reader.readAsDataURL(file); // Чтение файла в формате base64
+        }
+      });
+
+      // Открыть модальное окно с QR при нажатии "Предъявить документ"
+      if (presentButton && qrOverlay) {
+        presentButton.addEventListener('click', function () {
+          // показать индикатор загрузки
+          if (qrLoading) {
+            qrLoading.classList.add('qr-loading--visible');
+          }
+
+          // генерируем код и QR при каждом открытии
+          const randomCode = Math.floor(100000 + Math.random() * 900000).toString();
+          if (qrCodeValue) {
+            qrCodeValue.textContent = randomCode;
+          }
+          if (qrImage) {
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(randomCode)}`;
+            qrImage.src = qrUrl;
+            qrImage.alt = `QR ${randomCode}`;
+          }
+
+          // небольшая имитация загрузки перед открытием листа
+          setTimeout(() => {
+            if (qrLoading) {
+              qrLoading.classList.remove('qr-loading--visible');
+            }
+            qrOverlay.classList.add('qr-modal--visible');
+          }, 700);
+        });
+      }
+
+      // Закрыть модальное окно по крестику
+      if (qrClose && qrOverlay) {
+        qrClose.addEventListener('click', function () {
+          qrOverlay.classList.remove('qr-modal--visible');
+          if (qrLoading) {
+            qrLoading.classList.remove('qr-loading--visible');
+          }
+        });
+      }
+
+      // Закрыть модальное окно по нажатию на затемнённый фон
+      if (qrOverlay) {
+        qrOverlay.addEventListener('click', function (event) {
+          if (event.target === qrOverlay) {
+            qrOverlay.classList.remove('qr-modal--visible');
+            if (qrLoading) {
+              qrLoading.classList.remove('qr-loading--visible');
+            }
+          }
+        });
+      }
+    });
+  </script>
+  <body>
+    <div class="main-container">
+      <div class="flex-row-a">
+        <a href="mindex.html" class="chevron-left"><div class="vector"></div></a>
+        <div class="my-bank">
+          <span class="udostoverenie">Удостоверение личности</span>
+        </div>
+      </div>
+      <div class="slider">
+        <div class="rectangle"></div>
+        <button class="button-rectangle"></button>
+        <div class="button-documents">Документы</div>
+        <a href="rindex.html" class="span-requisites">Реквизиты</a>
+      </div>
+      <div class="ready-made">
+        <div class="img-prewiev">
+          <img alt="Описание изображения" class="idimg" style="display: none;" />
+          <label id="upload-label" for="img-upl" style="cursor: pointer;">Загрузить документ</label>
+          <input type="file" id="img-upl" style="display: none;" />
+        </div>
+        <div class="bottom-actions">
+          <div class="present">
+            <div class="present-document">
+              <img src="scan-qr-500.svg" alt="" class="present-icon" />
+              <span>Предъявить документ</span>
+            </div>
+          </div>
+          <div class="present1">
+            <span class="present1-document">
+              <img src="logout-500.svg" alt="" class="present1-icon" />
+              <span>Отправить документ</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Индикатор загрузки -->
+      <div class="qr-loading" id="qr-loading">
+        <div class="qr-spinner"></div>
+      </div>
+
+      <!-- Нижнее модальное окно с QR-кодом -->
+      <div class="qr-modal-overlay" id="qr-modal">
+        <div class="qr-modal">
+          <div class="qr-modal-handle"></div>
+          <div class="qr-header">
+            <h2 class="qr-title">Удостоверение личности</h2>
+            <button class="qr-close" aria-label="Закрыть окно">&times;</button>
+          </div>
+          <p class="qr-subtitle">Покажите QR-код сотруднику</p>
+          <div class="qr-code-box">
+            <img id="qr-image" src="" alt="QR" />
+          </div>
+          <p class="qr-text-small">или скажите код</p>
+          <div class="qr-code-value">------</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
