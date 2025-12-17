@@ -26,6 +26,66 @@
       const qrCodeValue = document.querySelector('.qr-code-value');
       const qrLoading = document.getElementById('qr-loading');
 
+            // ===== Pinch-to-zoom + Pan (Hammer.js) =====
+      const container = document.getElementById('img-container');
+
+      let scale = 1, lastScale = 1;
+      let posX = 0, posY = 0;
+      let lastPosX = 0, lastPosY = 0;
+
+      function updateTransform() {
+        imgPreview.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
+      }
+
+      function resetTransform() {
+        scale = 1; lastScale = 1;
+        posX = 0; posY = 0;
+        lastPosX = 0; lastPosY = 0;
+        updateTransform();
+      }
+
+      // если картинка восстановилась из localStorage — тоже сбрасываем трансформ
+      if (savedImage) resetTransform();
+
+      // Сброс при новой загрузке файла
+      fileInput.addEventListener('change', function () {
+        resetTransform();
+      });
+
+      const hammer = new Hammer.Manager(container);
+      hammer.add(new Hammer.Pinch({ enable: true }));
+      hammer.add(new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }));
+      hammer.get('pan').recognizeWith(hammer.get('pinch'));
+
+      hammer.on('pinchstart', () => { lastScale = scale; });
+
+      hammer.on('pinchmove', (e) => {
+        if (imgPreview.style.display === 'none') return;
+        scale = Math.min(4, Math.max(1, lastScale * e.scale)); // 1..4
+        updateTransform();
+      });
+
+      hammer.on('panstart', () => {
+        lastPosX = posX;
+        lastPosY = posY;
+      });
+
+      hammer.on('panmove', (e) => {
+        if (imgPreview.style.display === 'none') return;
+        if (scale <= 1) return; // двигать только когда увеличено
+        posX = lastPosX + e.deltaX;
+        posY = lastPosY + e.deltaY;
+        updateTransform();
+      });
+
+      // Double tap = reset
+      hammer.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+      hammer.on('doubletap', () => {
+        if (imgPreview.style.display === 'none') return;
+        resetTransform();
+      });
+      // ===== /Pinch-to-zoom + Pan =====
+
       // Восстанавливаем изображение из localStorage при загрузке страницы
       const savedImage = localStorage.getItem('uploadedImage');
       if (savedImage) {
@@ -33,6 +93,7 @@
         imgPreview.style.display = 'block'; // Показываем изображение
         uploadLabel.style.display = 'none'; // Скрываем кнопку
       }
+      
 
       // Обработчик загрузки файла
       fileInput.addEventListener('change', function (event) {
@@ -103,6 +164,7 @@
       }
     });
   </script>
+
   <body>
     <div class="main-container">
       <div class="flex-row-a">
@@ -162,4 +224,6 @@
       </div>
     </div>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+
 </html>
