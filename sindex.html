@@ -44,9 +44,6 @@
         updateTransform();
       }
 
-      // если картинка восстановилась из localStorage — тоже сбрасываем трансформ
-      if (savedImage) resetTransform();
-
       // Сброс при новой загрузке файла
       fileInput.addEventListener('change', function () {
         resetTransform();
@@ -92,6 +89,7 @@
         imgPreview.src = savedImage;
         imgPreview.style.display = 'block'; // Показываем изображение
         uploadLabel.style.display = 'none'; // Скрываем кнопку
+        resetTransform();
       }
       
 
