@@ -6,7 +6,7 @@
 }
 
 .main-container {
-  overflow: hidden;
+  overflow: auto;
 }
 
 .main-container,
